@@ -57,6 +57,14 @@ class MainActivity : ComponentActivity() {
                         composable("pics_level") { PicsLvl(navController) }
                         composable("notification") { Notification(navController) }
                         composable("identify_lvl_1") { IdentifyLvl1(navController) }
+
+                        composable("ar_screen/{model}") { backStackEntry ->
+                            val model = backStackEntry.arguments?.getString("model") ?: "models/lithium.glb"
+                            ARScreen(navController, model)
+                        }
+
+
+
                     }
                 }
             }

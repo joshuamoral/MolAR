@@ -8,6 +8,11 @@ android {
     namespace = "com.example.molar2"
     compileSdk = 35
 
+    sourceSets {
+        getByName("main") {
+            assets.srcDirs("src/main/assets")
+        }
+    }
     defaultConfig {
         applicationId = "com.example.molar2"
         minSdk = 24
@@ -38,6 +43,8 @@ android {
         compose = true
         viewBinding = true
     }
+
+
 }
 
 dependencies {
@@ -87,6 +94,13 @@ dependencies {
     debugImplementation (libs.ui.tooling)
 
     implementation (libs.androidx.navigation.compose.v277)
+
+
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.arsceneview)
+    implementation(libs.core)
+    //implementation(libs.kotlinx.serialization.json)
+
 
 
 

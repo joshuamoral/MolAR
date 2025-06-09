@@ -20,6 +20,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import android.net.Uri
+
 
 
 @Composable
@@ -49,7 +51,7 @@ fun LiScreen(navController: NavController, modifier: Modifier = Modifier) {
 
         // Section for Lithium Information
         Column(
-            modifier = Modifier
+            modifier = Modifier    
                 .fillMaxWidth()
                 .background(
                     brush = Brush.horizontalGradient(
@@ -102,7 +104,9 @@ fun LiScreen(navController: NavController, modifier: Modifier = Modifier) {
                         .align(Alignment.TopEnd)
                         .padding(8.dp)
                         .clickable {
-                            // TODO: Add AR Action
+                            val lithiumModelPath = "models/gold.glb"
+                            navController.navigate("ar_screen/${Uri.encode(lithiumModelPath)}")
+
                         }
                 )
             }
