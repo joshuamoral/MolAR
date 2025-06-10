@@ -5,12 +5,14 @@ androidxActivityActivityCompose5 = "1.9.0"
 androidxComposeUiUi6 = "1.8.1"
 arsceneview = "2.2.1"
 core = "1.49.0"
+coreVersion = "3.4.1"
 foundation = "1.7.8"
 kotlin = "2.0.21"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+kotlinxCoroutinesCoreVersion = "1.7.3"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.1"
 composeBom = "2024.09.00"
@@ -28,6 +30,7 @@ materialIconsExtendedVersion = "1.6.7"
 navigationCompose = "2.8.9"
 navigationComposeVersion = "2.7.7"
 xandroidxComposeMaterialMaterial8 = "1.6.7"
+zxingAndroidEmbeddedVersion = "4.3.0"
 
 [libraries]
 accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanistFlowlayout" }
@@ -42,6 +45,8 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 androidx-navigation-compose-v277 = { module = "androidx.navigation:navigation-compose", version.ref = "navigationComposeVersion" }
 arsceneview = { module = "io.github.sceneview:arsceneview", version.ref = "arsceneview" }
 core = { module = "com.google.ar:core", version.ref = "core" }
+jetbrains-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCoreVersion" }
+journeyapps-zxing-android-embedded = { module = "com.journeyapps:zxing-android-embedded", version.ref = "zxingAndroidEmbeddedVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -56,6 +61,7 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesCoreVersion" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
@@ -66,6 +72,7 @@ material3 = { module = "androidx.compose.material3:material3", version.ref = "ma
 ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidxComposeUiUi6" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "androidxComposeUiUi6" }
 xandroidx-compose-material-material10 = { module = "androidx.compose.material:material", version.ref = "xandroidxComposeMaterialMaterial8" }
+zxing-core = { module = "com.google.zxing:core", version.ref = "coreVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

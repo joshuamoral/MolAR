@@ -104,7 +104,7 @@ fun LiScreen(navController: NavController, modifier: Modifier = Modifier) {
                         .align(Alignment.TopEnd)
                         .padding(8.dp)
                         .clickable {
-                            val lithiumModelPath = "models/gold.glb"
+                            val lithiumModelPath = "models/lithium.glb"
                             navController.navigate("ar_screen/${Uri.encode(lithiumModelPath)}")
 
                         }
@@ -139,7 +139,7 @@ fun LiScreen(navController: NavController, modifier: Modifier = Modifier) {
             // Additional Information and Sections
             Text("Lithium", color = Color(0xFFFFB100), fontSize = 20.sp)
             Text(
-                "Lithium is silvery in appearance, like other alkali metals...",
+                "Lithium (from Ancient Greek λίθος (líthos) 'stone'; symbol Li and atomic number 3) is a soft, silvery-white alkali metal. Under standard conditions, it is the least dense metal and the least dense solid element. Like all alkali metals, lithium is highly reactive and flammable, and must be stored in vacuum, inert atmosphere, or inert liquid such as purified kerosene[7] or mineral oil. It exhibits a metallic luster. It corrodes quickly in air to a dull silvery gray, then black tarnish. It does not occur freely in nature, but occurs mainly as pegmatitic minerals, which were once the main source of lithium. Due to its solubility as an ion, it is present in ocean water and is commonly obtained from brines. Lithium metal is isolated electrolytically from a mixture of lithium chloride and potassium chloride.",
                 color = Color.White,
                 fontSize = 14.sp
             )
@@ -157,7 +157,7 @@ fun LiScreen(navController: NavController, modifier: Modifier = Modifier) {
 
             Text("Uses", color = Color(0xFFFFB100), fontWeight = FontWeight.Bold)
             Text(
-                "Lithium has many uses including in heat transfer applications...",
+                "Lithium and its compounds have several industrial applications, including heat-resistant glass and ceramics, lithium grease lubricants, flux additives for iron, steel and aluminium production, lithium metal batteries, and lithium-ion batteries. These uses consume more than three-quarters of lithium production.",
                 color = Color.White,
                 fontSize = 14.sp
             )
@@ -167,7 +167,7 @@ fun LiScreen(navController: NavController, modifier: Modifier = Modifier) {
             // Sources Section
             Text("Sources", color = Color(0xFFFFB100), fontWeight = FontWeight.Bold)
             Text(
-                "Lithium does not occur freely in nature, but is found in small units in igneous rocks...",
+                "The nucleus of the lithium atom verges on instability, since the two stable lithium isotopes found in nature have among the lowest binding energies per nucleon of all stable nuclides. Because of its relative nuclear instability, lithium is less common in the solar system than 25 of the first 32 chemical elements even though its nuclei are very light: it is an exception to the trend that heavier nuclei are less common.[8] For related reasons, lithium has important uses in nuclear physics. The transmutation of lithium atoms to helium in 1932 was the first fully human-made nuclear reaction, and lithium deuteride serves as a fusion fuel in staged thermonuclear weapons.",
                 color = Color.White,
                 fontSize = 14.sp
             )

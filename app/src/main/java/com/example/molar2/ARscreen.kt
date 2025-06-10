@@ -23,6 +23,18 @@ import io.github.sceneview.rememberOnGestureListener
 import io.github.sceneview.rememberView
 import io.github.sceneview.ar.node.AnchorNode
 import io.github.sceneview.node.ModelNode
+import android.util.Log
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
+
+
+import io.github.sceneview.ar.ARScene
+
+
+
+
 
 @Composable
 fun ARScreen(navController: NavController, model: String) {
@@ -38,6 +50,36 @@ fun ARScreen(navController: NavController, model: String) {
     val modelInstance = remember { mutableListOf<ModelInstance>() }
     val frame = remember { mutableStateOf<Frame?>(null) }
 
+    // ✅ Safe cleanup with DisposableEffect
+//    DisposableEffect(Unit) {
+//        onDispose {
+//            Log.d("ARCleanup", "Cleaning up ${childNodes.size} nodes...")
+//
+//            try {
+//                childNodes.forEach { node ->
+//                    try {
+//                        if (node is AnchorNode) {
+//                            node.detachAnchor()   // ✅ safe
+//                        }
+//                        node.destroy()           // ✅ safe
+//                    } catch (e: Exception) {
+//                        Log.e("ARCleanup", "Error cleaning node", e)
+//                    }
+//                }
+//            } catch (e: Exception) {
+//                Log.e("ARCleanup", "Error cleaning nodes", e)
+//            }
+//
+//            try {
+//                engine.destroy()
+//                Log.d("ARCleanup", "Engine destroyed safely")
+//            } catch (e: Exception) {
+//                Log.e("ARCleanup", "Engine destroy failed", e)
+//            }
+//        }
+//    }
+
+    // 👇 Compose function, NOT assignable to a variable
     ARScene(
         modifier = Modifier.fillMaxSize(),
         engine = engine,
@@ -65,18 +107,20 @@ fun ARScreen(navController: NavController, model: String) {
                     val hitResult = frame.value?.hitTest(e.x, e.y)?.firstOrNull {
                         it.isValid(depthPoint = false, point = false)
                     }
+
                     val anchor = hitResult?.createAnchorOrNull()
                     anchor?.let {
+                        val newInstance = modelLoader.createInstancedModel(model, 10).last()
+                        modelInstance += newInstance
+
                         val modelNode = ModelNode(
-                            modelInstance = modelInstance.apply {
-                                if (isEmpty()) {
-                                    this += modelLoader.createInstancedModel(model, 10)
-                                }
-                            }.last(),
+                            modelInstance = newInstance,
                             scaleToUnits = 0.2f
                         )
+
                         val anchorNode = AnchorNode(engine, it)
                         anchorNode.addChildNode(modelNode)
+
                         childNodes += anchorNode
                     }
                 }

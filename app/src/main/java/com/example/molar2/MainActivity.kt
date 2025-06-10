@@ -63,6 +63,7 @@ class MainActivity : ComponentActivity() {
                             ARScreen(navController, model)
                         }
 
+                        composable("picslvl1") { PicsLvl1(navController) }
 
 
                     }

@@ -101,6 +101,12 @@ dependencies {
     implementation(libs.core)
     //implementation(libs.kotlinx.serialization.json)
 
+    implementation (libs.journeyapps.zxing.android.embedded)
+    implementation (libs.zxing.core)
+
+    implementation (libs.jetbrains.kotlinx.coroutines.core)
+    implementation (libs.kotlinx.coroutines.android)
+
 
 
 

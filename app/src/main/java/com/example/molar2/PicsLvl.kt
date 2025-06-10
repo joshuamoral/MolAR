@@ -1,6 +1,7 @@
 package com.example.molar2
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -8,13 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import androidx.compose.ui.graphics.Brush
 
 @Composable
 fun PicsLvl(navController: NavController) {
@@ -24,7 +25,7 @@ fun PicsLvl(navController: NavController) {
         },
         containerColor = Color(0xFF0D232E)
     ) { innerPadding ->
-        PicsLvl(
+        PicsLvlContent(
             navController = navController,
             modifier = Modifier.padding(innerPadding)
         )
@@ -32,15 +33,13 @@ fun PicsLvl(navController: NavController) {
 }
 
 @Composable
-fun PicsLvl(navController: NavController, modifier: Modifier = Modifier) {
+fun PicsLvlContent(navController: NavController, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        // ✅ TopNavigationBar at the very top — exactly like Setting_ActContent
         TopNavigationBar(navController = navController)
-
         Spacer(modifier = Modifier.height(8.dp))
 
         // Header card
@@ -59,59 +58,82 @@ fun PicsLvl(navController: NavController, modifier: Modifier = Modifier) {
                 )
                 .padding(16.dp),
             contentAlignment = Alignment.CenterStart
-        )
-        {Column {
-            Text(
-                text = "4 PICS, 1 WORD",
-                color = Color.White,
-                fontWeight = FontWeight.Bold,
-                fontSize = 14.sp,
-                lineHeight = 14.sp // 👈 match line height to font size
-            )
-            Text(
-                text = "Match the corresponding element",
-                color = Color.LightGray,
-                fontSize = 12.sp,
-                lineHeight = 12.sp // 👈 match again
-            )
-        }
-
+        ) {
+            Column {
+                Text(
+                    text = "4 PICS, 1 WORD",
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp,
+                    lineHeight = 14.sp
+                )
+                Text(
+                    text = "Match the corresponding element",
+                    color = Color.LightGray,
+                    fontSize = 12.sp,
+                    lineHeight = 12.sp
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Assessment cards
-        PicsLvl("Level 1: Basic", "All four images clearly hint at a common metal. ", 0.1f,  Color(0xFFFFA726))
-        PicsLvl("Level 2: Intermediate", "Images relate to the metal’s uses, properties, or appearance.", 0.1f, Color(0xFF2F98C7))
-        PicsLvl("Level 3: Advanced", "Challenging and abstract! Images may symbolize industrial uses, scientific applications, or rare forms of the metal.", 0.1f, Color(0xFF90A4AE))
+        // Level cards with navigation
+        PicsLvlCard(
+            title = "Level 1: Basic",
+            subtitle = "All four images clearly hint at a common metal.",
+            progress = 0.1f,
+            color = Color(0xFFFFA726),
+            onClick = { navController.navigate("picslvl1") }
+        )
 
+        PicsLvlCard(
+            title = "Level 2: Intermediate",
+            subtitle = "Images relate to the metal’s uses, properties, or appearance.",
+            progress = 0.1f,
+            color = Color(0xFF2F98C7),
+            onClick = { /* navController.navigate("picslvl2") */ }
+        )
 
-        Spacer(modifier = Modifier.weight(1f)) // Push bottom nav to bottom
+        PicsLvlCard(
+            title = "Level 3: Advanced",
+            subtitle = "Challenging and abstract! Images may symbolize industrial uses, scientific applications, or rare forms of the metal.",
+            progress = 0.1f,
+            color = Color(0xFF90A4AE),
+            onClick = { /* navController.navigate("picslvl3") */ }
+        )
+
+        Spacer(modifier = Modifier.weight(1f))
     }
 }
 
 @Composable
-fun PicsLvl(title: String, subtitle: String, progress: Float, color: Color) {
+fun PicsLvlCard(
+    title: String,
+    subtitle: String,
+    progress: Float,
+    color: Color,
+    onClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 6.dp)
             .background(Color(0xFF113543), shape = RoundedCornerShape(20.dp))
+            .clickable { onClick() }
             .padding(16.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(modifier = Modifier.weight(1f)) {
-                Text(title, color = color, fontSize = 14.sp, fontWeight = FontWeight.Bold,  lineHeight = 16.sp)
-                Text(subtitle, color = Color.LightGray, fontSize = 12.sp,lineHeight = 13.sp )
-
+                Text(title, color = color, fontSize = 14.sp, fontWeight = FontWeight.Bold, lineHeight = 16.sp)
+                Text(subtitle, color = Color.LightGray, fontSize = 12.sp, lineHeight = 13.sp)
             }
-
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PicsLvl() {
-    CombinationLvl(navController = rememberNavController())
+fun PicsLvlPreview() {
+    PicsLvl(navController = rememberNavController())
 }
