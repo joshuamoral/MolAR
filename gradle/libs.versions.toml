@@ -4,6 +4,8 @@ agp = "8.9.1"
 androidxActivityActivityCompose5 = "1.9.0"
 androidxComposeUiUi6 = "1.8.1"
 arsceneview = "2.2.1"
+barcodeScanning = "17.3.0"
+cameraLifecycle = "1.4.2"
 core = "1.49.0"
 coreVersion = "3.4.1"
 foundation = "1.7.8"
@@ -35,6 +37,10 @@ zxingAndroidEmbeddedVersion = "4.3.0"
 [libraries]
 accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanistFlowlayout" }
 androidx-activity-activity-compose-v190-x6 = { module = "androidx.activity:activity-compose", version.ref = "androidxActivityActivityCompose5" }
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraLifecycle" }
+androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "cameraLifecycle" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraLifecycle" }
+androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "cameraLifecycle" }
 androidx-compose-ui-ui9 = { module = "androidx.compose.ui:ui", version.ref = "androidxComposeUiUi6" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
@@ -44,6 +50,7 @@ androidx-material3-v121 = { module = "androidx.compose.material3:material3", ver
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-compose-v277 = { module = "androidx.navigation:navigation-compose", version.ref = "navigationComposeVersion" }
 arsceneview = { module = "io.github.sceneview:arsceneview", version.ref = "arsceneview" }
+barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcodeScanning" }
 core = { module = "com.google.ar:core", version.ref = "core" }
 jetbrains-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCoreVersion" }
 journeyapps-zxing-android-embedded = { module = "com.journeyapps:zxing-android-embedded", version.ref = "zxingAndroidEmbeddedVersion" }

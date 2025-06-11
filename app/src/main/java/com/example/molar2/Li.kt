@@ -104,7 +104,7 @@ fun LiScreen(navController: NavController, modifier: Modifier = Modifier) {
                         .align(Alignment.TopEnd)
                         .padding(8.dp)
                         .clickable {
-                            val lithiumModelPath = "models/lithium.glb"
+                            val lithiumModelPath = "models/goldmol.glb"
                             navController.navigate("ar_screen/${Uri.encode(lithiumModelPath)}")
 
                         }

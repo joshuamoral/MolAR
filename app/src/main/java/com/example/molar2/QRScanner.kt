@@ -9,17 +9,20 @@ import com.journeyapps.barcodescanner.ScanContract
 
 @Composable
 fun QRCodeScanner(
-    onQRCodeScanned: (String) -> Unit
+    onQRCodeScanned: (Int) -> Unit  // Passing drawable resource ID
 ) {
     val scanLauncher = rememberLauncherForActivityResult(contract = ScanContract()) { result ->
         try {
             if (!result.contents.isNullOrBlank()) {
                 Log.d("QRCodeScanner", "Scanned QR code: ${result.contents}")
-                onQRCodeScanned(result.contents)
+                if (result.contents == "MolAR (1).png") {
+                    onQRCodeScanned(R.drawable.molarqr)  // referencing molarQR drawable
+                } else {
+                    Log.e("QRCodeScanner", "Invalid QR code scanned: ${result.contents}")
+                    // Optional: show a message or fallback
+                }
             } else {
                 Log.e("QRCodeScanner", "Scan returned empty or null result")
-                // Optional fallback:
-                // onQRCodeScanned("molar.glb") // fallback model
             }
         } catch (e: Exception) {
             Log.e("QRCodeScanner", "Error handling QR result: ${e.message}", e)
@@ -31,11 +34,11 @@ fun QRCodeScanner(
         try {
             scanLauncher.launch(
                 ScanOptions().apply {
-                    setPrompt("Scan a QR Code to load a 3D model")
+                    setPrompt("Scan a QR Code to load an image")
                     setBeepEnabled(true)
                     setOrientationLocked(false)
                     setBarcodeImageEnabled(true)
-                    setDesiredBarcodeFormats(ScanOptions.QR_CODE) // Optional: limit to QR codes only
+                    setDesiredBarcodeFormats(ScanOptions.QR_CODE)
                 }
             )
         } catch (e: Exception) {

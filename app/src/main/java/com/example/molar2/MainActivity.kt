@@ -65,6 +65,13 @@ class MainActivity : ComponentActivity() {
 
                         composable("picslvl1") { PicsLvl1(navController) }
 
+                        composable("qrscanner") {
+                            QRCodeScanner { scannedContent ->
+                                // Navigate to ARScreen with model path depending on QR content
+                                navController.navigate("ar_screen/$scannedContent")
+                            }
+                        }
+
 
                     }
                 }
